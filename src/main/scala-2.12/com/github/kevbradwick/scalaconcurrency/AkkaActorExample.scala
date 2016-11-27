@@ -5,6 +5,7 @@ import akka.actor.{Actor, ActorSystem, Props}
 class HelloActor extends Actor {
   override def receive: Actor.Receive = {
     case "hello" => println("Hello World")
+    case n: Int => println(s"received a number: $n")
     case _ => println("???")
   }
 }
@@ -16,5 +17,6 @@ object AkkaActorExample extends App {
 
   helloActor ! "hello"
   helloActor ! "foo"
+  helloActor ! 123
 
 }
